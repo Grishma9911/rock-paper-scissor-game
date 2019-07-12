@@ -1,19 +1,34 @@
 var userScore = 0;
 var computerScore = 0;
-var computerScore_span = document.getElementById("user-score");
-var computerScore_span = document.getElementById("comp-score");
+var userScore_span = document.getElementById("user-score");
+var computerScore_span = document.getElementById("computer-score");
 var scoreBoard_div = document.querySelector(".score-board");
 var result_p = document.querySelector(".result");
 var rock_div = document.getElementById("r");
 var paper_div = document.getElementById("p");
 var scissor_div = document.getElementById("s");
 
-function getcomputerchoice() { 
+function main() {
+
+    rock_div.addEventListener("click", function() {
+        console.log("You clicked on rock.");
+    })
+    
+    paper_div.addEventListener("click", function() {
+        console.log("You clicked on paper.");
+    })
+    
+    scissor_div.addEventListener("click", function() {
+        console.log("You clicked on scissor.");
+    })
+    }
+
+function getComputerChoice() { 
     var choices = ["r", "p", "s"];
     var randomNumber = Math.floor(Math.random() * 3);
     return choices[randomNumber];
 }
-
+// no function occuring
 function convertToWord(letter) {
     if (letter === "r") return "rock";
     if (letter === "p") return "paper";
@@ -22,13 +37,13 @@ function convertToWord(letter) {
 
 function win(userChoice, computerChoice) {
     userScore++;
-    userScore_span.innerhtml = userScore;
+    document.getElementById("user-score").innerHTML = userScore;
     computerScore_span.innerhtml = computerScore;
     result_p.innerhtml = convertToWord(userChoice) + " beats " + convertToWord(computerChoice)  + "You Win.";
 }
 
 function loose(userChoice, computerChoice) {
-    compScore++;
+    compterScore++;
     userScore_span.innerhtml = userScore;
     computerScore_span.innerhtml = computerScore;
     result_p.innerhtml = convertToWord(computerChoice) + " beats " + convertToWord(userChoice)  + "You lost.";
@@ -40,7 +55,7 @@ function draw(userChoice, computerChoice) {
 
 function game(userChoice) {
     var computerChoice = getComputerChoice();
-    switch (userChoice + computerChoice) {
+    switch (userChoice) {
         case "rs":
         case "pr": 
         case "sp":
@@ -61,21 +76,6 @@ function game(userChoice) {
     var name = "grishma";
     if (name === "grishma") []
 }
-
-function main() {
-
-rock_div.addEventListener("click", function() {
-    console.log("You clicked on rock.");
-})
-
-paper_div.addEventListener("click", function() {
-    console.log("You clicked on paper.");
-})
-
-scissor_div.addEventListener("click", function() {
-    console.log("You clicked on scissor.");
-})
-}
-
+game("userChoice", "computerChoice");
 main();
 
